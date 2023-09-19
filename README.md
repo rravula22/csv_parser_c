@@ -1,45 +1,57 @@
-# Lab-06: Standard Input/Output Functions and Standard Input/Output Streams
+# CSV Data Processor
 
-## Name: 
+This CSV data processor is a C program designed to read, manipulate, and sort CSV data from a given input file. It provides two sorting options: by host name and by price. The processed data can be saved in separate CSV files for further analysis.
 
-## Honor Code:
+## Usage
 
-I, Rakesh Ravula, declare that I have completed this assignment completely and entirely on my own, without any unathorized consultation from others or unathorized access to online websites. I have read the UAB Academic Honor Code and understand that any breach of the UAB Academic Honor Code may result in severe penalties.
+To use this CSV data processor, follow these steps:
 
-Student Signature/Initials: Rakesh Ravula
+1. **Compile the Program:** Compile the program using a C compiler.
 
-Date: 03/01/2023
+   ```bash
+   gcc listing.c -o listing
+   ```
 
-## Assignment:
+2. **Run the Program:** Execute the program with the input CSV file as an argument.
 
-1. Write a program in C to read the *Listings.csv* file.
+   ```bash
+   ./listing input.csv
+   ```
 
-2. Declare a function, sortByHostName, that should sort the data based on hostname.
- 
-3. Declare a function, sortByPrice, that should sort the data based on price.
+   Replace `input.csv` with the path to your CSV file.
 
-4. After sorting, sortByPrice and sortByHostName should write the sorted array to a file.
+3. **Output Files:**
 
+   - The sorted data by host name will be saved in a file named `host_name_listing.csv`.
+   - The sorted data by price will be saved in a file named `price_listing.csv`.
 
+## Program Structure
 
-**General Approach**
+The program is structured as follows:
 
-1. Declare a struct called 'Listing' with contains all the attributes found in *'Listings.csv'*.
+- It reads the CSV file specified as a command-line argument and stores the data in a dynamically allocated array of `struct listing_obj`.
 
-2. Define a function that will take one line of the CSV file and return a 'Listing' struct with corresponding attribute values.
+- It provides two sorting options using the `qsort` function:
+   - Sorting by host name in ascending order.
+   - Sorting by price in ascending order.
 
-3. Declare an array of the 'Listing' structs.
+- The sorted data is written to separate CSV files for further analysis.
 
-4. Open the *'Listings.csv'* file with the *fopen()* function in read-mode.
+## File Descriptions
 
-5. Loop through each line of the *'Listings.csv'* file. Feel free to use either the *fgets()* function or the *getline()* function.
+- `listing.c`: The main program source code.
+- `listing_obj`: Defines the structure for storing CSV data.
+- `getValues`: A function to parse a CSV row and extract values into a `struct listing_obj`.
+- `printFiles`: A function to print sorted data to CSV files.
+- `sortByHostName`: A comparison function for sorting by host name.
+- `sortByPrice`: A comparison function for sorting by price.
 
-6. For each line, call the function you previously defined.
+## License
 
-7. Store the result in array of 'Listing' structs.
+This CSV data processor is open-source software released under the MIT License. You are free to use, modify, and distribute it as needed. Please see the `LICENSE` file for more details.
 
-8. In sortByHostName and sortByPrice, use the qsort() function to sort the array.
+## Contributing
 
-9. Use the *fopen()* to open a file in write mode.
+If you have suggestions for improvements or find any issues, please feel free to open an issue or create a pull request. Contributions from the community are welcome and appreciated.
 
-10. Use the *fputs()* function or the *fprintf()* to write the sorted array to a file.
+Thank you for using the CSV data processor!
